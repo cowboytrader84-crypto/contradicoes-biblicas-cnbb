@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contradições Bíblicas - Edição CNBB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = { content: ["./**/*.{html,js}"] }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Lora:wght@400;600&display=swap');
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2 { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+  <!-- HEADER -->
+  <header class="bg-[#1e3a8a] text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📖</span>
+        <h1 class="text-2xl font-bold">Contradições Bíblicas CNBB</h1>
+      </div>
+      <nav class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-amber-300">Início</a>
+        <a href="contradicoes.html" class="hover:text-amber-300">Todas as Contradições</a>
+        <a href="busca.html" class="hover:text-amber-300">Buscar</a>
+        <a href="sobre.html" class="hover:text-amber-300">Sobre</a>
+      </nav>
+      <button onclick="window.location.href='detalhes.html?id=1'" class="bg-amber-400 hover:bg-amber-300 text-[#1e3a8a] px-6 py-2 rounded-xl font-semibold">Ver exemplo</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-br from-[#1e3a8a] to-[#2d5a8c] text-white py-24">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-5xl font-bold mb-6">674 Contradições e Erros na Bíblia</h2>
+      <p class="text-2xl mb-10">Tradução oficial da CNBB • Comparação lado a lado • Totalmente gratuito</p>
+      <a href="contradicoes.html" class="inline-block bg-amber-400 text-[#1e3a8a] px-10 py-4 rounded-2xl text-xl font-semibold hover:scale-105 transition">Explorar todas as contradições</a>
+    </div>
+  </section>
+
+  <!-- ESTATÍSTICAS -->
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl text-center shadow">
+      <div class="text-6xl font-bold text-[#1e3a8a]">674</div>
+      <div class="text-lg mt-2">Contradições catalogadas</div>
+    </div>
+    <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl text-center shadow">
+      <div class="text-6xl font-bold text-[#1e3a8a]">66</div>
+      <div class="text-lg mt-2">Livros da Bíblia</div>
+    </div>
+    <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl text-center shadow">
+      <div class="text-6xl font-bold text-[#1e3a8a]">CNBB</div>
+      <div class="text-lg mt-2">Tradução oficial católica</div>
+    </div>
+    <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl text-center shadow">
+      <div class="text-6xl font-bold text-[#1e3a8a]">100%</div>
+      <div class="text-lg mt-2">Versículos completos</div>
+    </div>
+  </div>
+
+  <footer class="mt-auto bg-[#1e3a8a] text-white py-12 text-center text-sm">
+    <p>Projeto educacional • Fonte: BibViz Project + Bíblia Online CNBB</p>
+  </footer>
+
+  <script>
+    // Dark mode automático
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage))) {
+      document.documentElement.classList.add('dark')
+    }
+  </script>
+</body>
+</html>
