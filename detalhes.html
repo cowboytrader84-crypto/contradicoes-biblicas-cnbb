@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes - Contradições Bíblicas CNBB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <script>tailwind.config = { content: ["./**/*.{html,js}"] }</script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Lora:wght@400;600&display=swap');
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2 { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+
+  <header class="bg-[#1e3a8a] text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📖</span>
+        <h1 class="text-2xl font-bold">Contradições Bíblicas CNBB</h1>
+      </div>
+      <nav class="flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-amber-300">Início</a>
+        <a href="contradicoes.html" class="hover:text-amber-300">Todas</a>
+        <a href="sobre.html" class="hover:text-amber-300">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-6 py-10">
+    <a href="contradicoes.html" class="inline-flex items-center gap-2 text-[#1e3a8a] hover:underline mb-8">
+      ← Voltar para a lista
+    </a>
+
+    <h1 id="titulo" class="text-4xl font-bold mb-10"></h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Versículos CNBB -->
+      <div>
+        <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+          📖 Versículos da Bíblia (CNBB)
+        </h3>
+        <div id="versiculos-list" class="space-y-10"></div>
+      </div>
+
+      <!-- Análise -->
+      <div class="bg-amber-50 dark:bg-slate-800 p-8 rounded-3xl h-fit sticky top-8">
+        <h3 class="text-2xl font-semibold mb-6 text-amber-800 dark:text-amber-300">🔍 Por que é uma contradição?</h3>
+        <p id="analise" class="leading-relaxed"></p>
+      </div>
+    </div>
+
+    <div id="aviso-indisponivel" class="hidden mt-12 p-8 bg-red-50 dark:bg-red-900/30 rounded-3xl text-red-700 dark:text-red-300">
+      ⚠️ Alguns versículos não foram localizados na extração automática da CNBB.<br>
+      <a href="https://www.bibliaonline.com.br/vc" target="_blank" class="underline font-medium">Consultar na Bíblia Online CNBB →</a>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = parseInt(urlParams.get('id')) || 1;
+
+    fetch('data/contradicoes.json')
+      .then(r => r.json())
+      .then(data => {
+        const item = data.find(i => i.id === id) || data[0];
+
+        document.getElementById('titulo').innerHTML = `<span class="text-amber-600">${item.numero}.</span> ${item.titulo}`;
+
+        document.getElementById('analise').innerHTML = `
+          Este item apresenta contradição entre os versículos listados à esquerda.<br><br>
+          <strong>Referências:</strong> ${item.referencias.join(' • ')}
+        `;
+
+        const container = document.getElementById('versiculos-list');
+        container.innerHTML = item.versiculos.map(v => `
+          <div class="border-l-4 border-amber-400 pl-6 py-1">
+            <div class="font-medium text-[#1e3a8a] mb-2">${v.referencia}</div>
+            <p class="text-lg leading-relaxed">${v.texto}</p>
+          </div>
+        `).join('');
+
+        if (item.texto_indisponivel) {
+          document.getElementById('aviso-indisponivel').classList.remove('hidden');
+        }
+      });
+  </script>
+</body>
+</html>
