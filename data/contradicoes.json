@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "numero": 3,
+    "titulo": "Quantos filhos Abraão teve?",
+    "referencias": ["Hebreus 11:17", "Gênesis 22:2", "Gênesis 16:15", "Gênesis 21:2", "Gênesis 25:1", "Gálatas 4:22"],
+    "versiculos": [
+      {"referencia": "Hebreus 11:17", "texto": "17 Foi pela sua fé que Abraão, submetido à prova, ofereceu Isaac, seu único filho,"},
+      {"referencia": "Gênesis 22:2", "texto": "2 Deus disse: \"Toma teu filho, teu único filho a quem tanto amas, Isaac; e vai à terra de Moriá...\""},
+      {"referencia": "Gênesis 16:15", "texto": "15 Agar deu à luz um filho a Abrão, o qual lhe pôs o nome de Ismael."},
+      {"referencia": "Gênesis 21:2", "texto": "2 Sara concebeu e, apesar de sua velhice, deu à luz um filho a Abraão, no tempo fixado por Deus."},
+      {"referencia": "Gênesis 25:1", "texto": "1 Abraão tomou outra mulher, chamada Cetura,"},
+      {"referencia": "Gálatas 4:22", "texto": "22 A Escritura diz que Abraão teve dois filhos, um da escrava e outro da livre."}
+    ],
+    "livros": ["Hebreus", "Gênesis", "Gálatas"],
+    "numVersiculos": 6,
+    "texto_indisponivel": false
+  },
+  {
+    "id": 2,
+    "numero": 19,
+    "titulo": "Quando Acazias começou a reinar?",
+    "referencias": ["2 Reis 8:25", "2 Reis 9:29"],
+    "versiculos": [
+      {"referencia": "2 Reis 8:25", "texto": "25 No décimo segundo ano de Jorão, filho de Acab, rei de Israel, Ocozias, filho de Jorão, tornou-se rei de Judá."},
+      {"referencia": "2 Reis 9:29", "texto": "29 Ocozias tornara-se rei de Judá no décimo primeiro ano de Jorão, filho de Acab."}
+    ],
+    "livros": ["2 Reis"],
+    "numVersiculos": 2,
+    "texto_indisponivel": false
+  }
+]
