@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todas as Contradições - CNBB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <script>tailwind.config = { content: ["./**/*.{html,js}"] }</script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Lora:wght@400;600&display=swap');
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2 { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+
+  <!-- Header -->
+  <header class="bg-[#1e3a8a] text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📖</span>
+        <h1 class="text-2xl font-bold">Contradições Bíblicas CNBB</h1>
+      </div>
+      <nav class="flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-amber-300">Início</a>
+        <a href="contradicoes.html" class="text-amber-300 font-semibold">Todas</a>
+        <a href="busca.html" class="hover:text-amber-300">Buscar</a>
+        <a href="sobre.html" class="hover:text-amber-300">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-6 py-10">
+    <h1 class="text-4xl font-bold mb-2">Todas as 674 Contradições</h1>
+    <p class="text-slate-600 dark:text-slate-400 mb-8">Clique em qualquer item para ver os versículos completos da CNBB</p>
+
+    <div id="lista" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+  </div>
+
+  <script>
+    fetch('data/contradicoes.json')
+      .then(r => r.json())
+      .then(data => {
+        const container = document.getElementById('lista');
+        container.innerHTML = data.map(item => `
+          <a href="detalhes.html?id=${item.id}" 
+             class="block bg-white dark:bg-slate-800 p-6 rounded-3xl hover:shadow-xl transition border border-transparent hover:border-amber-300">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-amber-600 font-mono text-sm">${item.numero}</span>
+                <h3 class="text-xl font-semibold mt-1 leading-tight">${item.titulo}</h3>
+              </div>
+              <span class="bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 text-xs px-3 py-1 rounded-2xl font-medium">
+                ${item.numVersiculos} vers.
+              </span>
+            </div>
+          </a>
+        `).join('');
+      });
+  </script>
+</body>
+</html>
